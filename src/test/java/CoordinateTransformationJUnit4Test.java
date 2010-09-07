@@ -20,6 +20,8 @@ import coordinatetransformation.positions.RT90Position;
 import coordinatetransformation.positions.SWEREF99Position;
 import coordinatetransformation.positions.WGS84Position;
 import java.text.ParseException;
+import java.util.Locale;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,7 +47,7 @@ public class CoordinateTransformationJUnit4Test {
             // Reference: http://www.lantmateriet.se/templates/LMV_Enkelkoordinattransformation.aspx?id=11500
             String latDmsStringFromLM = "N 59º 20' 56,09287\"";
             String lonDmsStringFromLM = "E 18º 2' 50,34806\"";
-
+System.out.println(String.format(new Locale("en", "UK"), "%.0f", 1.23));
             Assert.assertEquals(latDmsStringFromLM, wgsPos.latitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
             Assert.assertEquals(lonDmsStringFromLM, wgsPos.longitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
 

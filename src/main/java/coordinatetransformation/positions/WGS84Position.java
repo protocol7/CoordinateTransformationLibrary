@@ -21,6 +21,7 @@ package coordinatetransformation.positions;
 
 import coordinatetransformation.Position;
 import java.text.ParseException;
+import java.util.Locale;
 
 
 public class WGS84Position extends Position {
@@ -148,7 +149,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                double degrees = Math.floor(Math.abs(value));
                double minutes = (Math.abs(value) - degrees) * 60;
 
-               return String.format("%s %.0fº %.0f'", value >=0 ? positiveValue : negativeValue, degrees, ((double)Math.floor(minutes * 10000) / 10000));
+               return String.format(new Locale("sv", "SE"), "%s %.0fº %.0f'", value >=0 ? positiveValue : negativeValue, degrees, ((double)Math.floor(minutes * 10000) / 10000));
            }
 
            private String convToDmsString(double value, String positiveValue,String negativeValue) {
@@ -160,7 +161,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                double minutes = Math.floor((Math.abs(value) - degrees) * 60);
                double seconds = (Math.abs(value) - degrees - minutes / 60) * 3600;
 
-               return String.format("%s %.0fº %.0f' %.5f\"",value >=0 ? positiveValue : negativeValue, degrees, minutes, ((double) Math.round(seconds * 100000) / 100000));
+               return String.format(new Locale("sv", "SE"), "%s %.0fº %.0f' %.5f\"",value >=0 ? positiveValue : negativeValue, degrees, minutes, ((double) Math.round(seconds * 100000) / 100000));
            }
 
            private double parseValueFromDmString(String value, String positiveChar) {
